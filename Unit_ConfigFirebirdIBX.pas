@@ -1,4 +1,4 @@
-{ ============================================================================
+﻿{ ============================================================================
   Unit_ConfigFirebirdIBX.pas
   Formulário de Configuração de Conexão Firebird IBX
 
@@ -210,7 +210,7 @@ begin
 
     // Criptografar senha antes de salvar
     if Trim(EditSenha.Text) <> '' then
-      SenhaCriptografada := MyCrypt('C', Trim(EditSenha.Text))
+      SenhaCriptografada := Biblioteca.MyCrypt('C', Trim(EditSenha.Text))
     else
       SenhaCriptografada := '';
     IniFile.WriteString(SECAO_INI, 'Senha', SenhaCriptografada);

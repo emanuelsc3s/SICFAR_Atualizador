@@ -22,14 +22,15 @@ object Form_ConfigFirebirdIBX: TForm_ConfigFirebirdIBX
     Width = 500
     Height = 60
     Align = alTop
-    Color = 12373300
+    BevelOuter = bvNone
+    Color = 12477460
     ParentBackground = False
     TabOrder = 0
     object Label14: TLabel
       Left = 70
       Top = 8
-      Width = 280
-      Height = 24
+      Width = 205
+      Height = 26
       Caption = 'Configura'#231#227'o Firebird'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
@@ -41,8 +42,8 @@ object Form_ConfigFirebirdIBX: TForm_ConfigFirebirdIBX
     object Label15: TLabel
       Left = 70
       Top = 35
-      Width = 200
-      Height = 16
+      Width = 160
+      Height = 18
       Caption = 'Par'#226'metros de Conex'#227'o IBX'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
@@ -69,7 +70,7 @@ object Form_ConfigFirebirdIBX: TForm_ConfigFirebirdIBX
     object LabelServidor: TLabel
       Left = 16
       Top = 28
-      Width = 52
+      Width = 54
       Height = 13
       Caption = 'Servidor:'
     end
@@ -83,35 +84,35 @@ object Form_ConfigFirebirdIBX: TForm_ConfigFirebirdIBX
     object LabelCaminho: TLabel
       Left = 16
       Top = 72
-      Width = 103
+      Width = 113
       Height = 13
       Caption = 'Caminho do Banco:'
     end
     object LabelUsuario: TLabel
       Left = 16
       Top = 116
-      Width = 47
+      Width = 48
       Height = 13
       Caption = 'Usu'#225'rio:'
     end
     object LabelSenha: TLabel
       Left = 250
       Top = 116
-      Width = 39
+      Width = 41
       Height = 13
       Caption = 'Senha:'
     end
     object LabelCharSet: TLabel
       Left = 16
       Top = 160
-      Width = 77
+      Width = 85
       Height = 13
       Caption = 'Character Set:'
     end
     object LabelDialeto: TLabel
       Left = 250
       Top = 160
-      Width = 70
+      Width = 72
       Height = 13
       Caption = 'Dialeto SQL:'
     end

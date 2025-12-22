@@ -1,4 +1,4 @@
-unit Unit_dm1;
+﻿unit Unit_dm1;
 
 interface
 
@@ -344,7 +344,7 @@ begin
 
         Params.Clear;
         Params.Add('user_name=' + Usuario);
-        Params.Add('password='  + MyCrypt('D', senha));
+        Params.Add('password='  + Biblioteca.MyCrypt('D', senha));
         Params.Add('lc_ctype='  + Character);
         SQLDialect := Dialeto;
 

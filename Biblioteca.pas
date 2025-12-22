@@ -88,6 +88,7 @@ Uses
    function  RenomearArquivo(caminhoOriginal, novoNome: string): string;
    function  RemoveInvalidChars(const FileName: string): string;
    function GetFileSize(const FileName: string): Int64;
+   function MyCrypt(Action, Src: String): String;
 
 implementation
 
