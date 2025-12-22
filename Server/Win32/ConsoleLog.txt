@@ -46,3 +46,27 @@
 -------------------------------------------
 02/09/2025 09:10:35-Servidor Desativado.
 -------------------------------------------
+22/12/2025 10:47:40 - Erro ao enviar lembrete da manhã: Access violation at address 0070EF6F in module 'SICServidorAtualizador.exe'. Read of address 00000000
+-------------------------------------------
+22/12/2025 10:52:49 - Erro ao enviar lembrete da manhã: Access violation at address 0070EF6F in module 'SICServidorAtualizador.exe'. Read of address 00000000
+-------------------------------------------
+22/12/2025 10:52:54-Servidor Desativado.
+-------------------------------------------
+22/12/2025 10:52:59 - Erro ao enviar lembrete da manhã: Access violation at address 0070EF6F in module 'SICServidorAtualizador.exe'. Read of address 00000000
+-------------------------------------------
+22/12/2025 10:53:09 - Erro ao enviar lembrete da manhã: Access violation at address 0070EF6F in module 'SICServidorAtualizador.exe'. Read of address 00000000
+-------------------------------------------
+22/12/2025 10:53:19 - Erro ao enviar lembrete da manhã: Access violation at address 0070EF6F in module 'SICServidorAtualizador.exe'. Read of address 00000000
+-------------------------------------------
+22/12/2025 10:53:29 - Erro ao enviar lembrete da manhã: Access violation at address 0070EF6F in module 'SICServidorAtualizador.exe'. Read of address 00000000
+-------------------------------------------
+22/12/2025 10:53:39 - Erro ao enviar lembrete da manhã: Access violation at address 0070EF6F in module 'SICServidorAtualizador.exe'. Read of address 00000000
+-------------------------------------------
+22/12/2025 10:53:49 - Erro ao enviar lembrete da manhã: Access violation at address 0070EF6F in module 'SICServidorAtualizador.exe'. Read of address 00000000
+-------------------------------------------
+22/12/2025 10:54:06 - Erro ao enviar lembrete da manhã: Access violation at address 0070EF6F in module 'SICServidorAtualizador.exe'. Read of address 00000000
+-------------------------------------------
+22/12/2025 10:54:16 - Erro ao enviar lembrete da manhã: Access violation at address 0070EF6F in module 'SICServidorAtualizador.exe'. Read of address 00000000
+-------------------------------------------
+22/12/2025 10:54:17-Servidor Desativado.
+-------------------------------------------

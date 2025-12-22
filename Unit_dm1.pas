@@ -300,7 +300,8 @@ var
 implementation
 
 uses
-  Winapi.Windows, Vcl.DBCtrls, Vcl.Forms, Biblioteca;
+  Winapi.Windows, Vcl.DBCtrls, Vcl.Forms, Biblioteca, Unit_ConfigFirebirdIBX,
+  Unit_Server;
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
@@ -344,8 +345,35 @@ begin
 
         Params.Clear;
         Params.Add('user_name=' + Usuario);
-        Params.Add('password='  + Biblioteca.MyCrypt('D', senha));
-        Params.Add('lc_ctype='  + Character);
+
+        // Tentar descriptografar a senha - se falhar, senha não está criptografada
+        try
+          Params.Add('password=' + Biblioteca.MyCrypt('D', Senha));
+        except
+          on E: EConvertError do
+          begin
+            MessageDlg('A senha de conexão precisa ser reconfigurada.' + sLineBreak +
+                       'O formulário de configuração será aberto.', mtWarning, [mbOK], 0);
+
+            // Desativar o servidor antes de abrir o formulário de configuração
+            if Assigned(Form_PrincipalServer) then
+              Form_PrincipalServer.btn_DesativarClick(nil);
+
+            // Criar e exibir formulário de configuração
+            Application.CreateForm(TForm_ConfigFirebirdIBX, Form_ConfigFirebirdIBX);
+            try
+              Form_ConfigFirebirdIBX.ShowModal;
+
+              // Após fechar o form, aplicar as novas configurações
+              Form_ConfigFirebirdIBX.AplicarConfiguracoesAoIBDatabase(IBDatabase1);
+            finally
+              FreeAndNil(Form_ConfigFirebirdIBX);
+            end;
+            Exit; // Sair do procedimento pois as configurações já foram aplicadas
+          end;
+        end;
+
+        Params.Add('lc_ctype=' + Character);
         SQLDialect := Dialeto;
 
         try
