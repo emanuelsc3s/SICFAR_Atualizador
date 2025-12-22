@@ -6,11 +6,11 @@ object dmProtheus: TdmProtheus
   object ADOConnection1: TADOConnection
     CommandTimeout = 200
     ConnectionString = 
-      'Provider=SQLOLEDB.1;Password=far1989!@#123;Persist Security Info' +
-      '=True;User ID=sa;Initial Catalog=TOTVS_PRODUCAO;Data Source=192.' +
-      '168.0.222;Use Procedure for Prepare=1;Auto Translate=True;Packet' +
-      ' Size=4096;Workstation ID=SEATTLE-VIRTUAL;Use Encryption for Dat' +
-      'a=False;Tag with column collation when possible=False'
+      'Provider=SQLOLEDB.1;Password=V7p!3qZ@;Persist Security Info=True' +
+      ';User ID=sa;Initial Catalog=TOTVS_PRODUCAO;Data Source=192.168.0' +
+      '.222;Use Procedure for Prepare=1;Auto Translate=True;Packet Size' +
+      '=4096;Workstation ID=SEATTLE-VIRTUAL;Use Encryption for Data=Fal' +
+      'se;Tag with column collation when possible=False'
     LoginPrompt = False
     Provider = 'SQLOLEDB.1'
     BeforeConnect = ADOConnection1BeforeConnect
