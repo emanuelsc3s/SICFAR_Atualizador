@@ -402,36 +402,6 @@ begin
         end;
       end;
 
-    // SICFAR CLOUD
-    Caminho    := ArqIni.ReadString  ('APFAR_CLOUD', 'Caminho' ,    Caminho);
-    Dialeto    := ArqIni.ReadInteger ('APFAR_CLOUD', 'Dialeto' ,    Dialeto);
-    Usuario    := ArqIni.ReadString  ('APFAR_CLOUD', 'Usuario' ,    Usuario);
-    Senha      := ArqIni.ReadString  ('APFAR_CLOUD', 'Senha'   ,    Senha);
-    Character  := ArqIni.ReadString  ('APFAR_CLOUD', 'ChrSet'  ,    Character);
-    AuditTrail := ArqIni.ReadString  ('APFAR_CLOUD', 'AuditTrail' , AuditTrail);
-
-    with IBDatabaseCloudSICFAR do
-      begin
-        Connected    := False;
-        DatabaseName := Caminho;
-
-        Params.Clear;
-        Params.Add('user_name=' + Usuario);
-        Params.Add('password='  + senha); //Biblioteca.MyCrypt('D', senha));
-        Params.Add('lc_ctype='  + Character);
-        SQLDialect := Dialeto;
-
-        try
-          IBDatabaseCloudSICFAR.Connected := True;
-          IBTransactionCloudSICFAR.Active := True;
-        except on ex : exception do
-          begin
-            MessageDlg('Problemas ao Conectar a Base de Dados ['  + Caminho + ']. Erro: ' + ex.Message, mtWarning, [mbOK], 0);
-            Close;
-          end;
-        end;
-      end;      
-
     // PEDIDOS ONLINE
     Caminho    := ArqIni.ReadString  ('PEDIDOSONLINE', 'Caminho' ,    Caminho);
     Dialeto    := ArqIni.ReadInteger ('PEDIDOSONLINE', 'Dialeto' ,    Dialeto);
@@ -460,7 +430,7 @@ begin
             Close;
           end;
         end;
-      end;            
+      end;
   finally
     ArqIni.Free;
   end;
