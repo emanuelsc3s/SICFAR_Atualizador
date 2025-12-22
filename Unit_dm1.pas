@@ -146,14 +146,9 @@ type
     procedure DataModuleCreate(Sender: TObject);
     procedure IBDatabase1AfterConnect(Sender: TObject);
   private
-    procedure LeIni (var Caminho, Caminho2, Usuario, Usuario2, Senha, Senha2, CharacterSet, Auto : String;
-                   Arquivo : String; var Dialeto : Integer; Maquina: String);
-
     procedure Get_Build_Info(var v1, v2, v3, v4 : Word);
   public
     { Public declarations }
-    procedure pRegistraAcesso(prTipo, prLocal, prAtividade, prUsuarioID, prUsuario, prData : String);
-
     function Get_Versao : String;
     function fPerfilRotina(prUsuarioID, prRotina: string): Boolean;
     function fEnviaEmailRNC(const AAssunto, ADestino, AAnexo, prRNCID : String; prCDSCampos : TClientDataSet): Boolean;
@@ -2782,28 +2777,6 @@ begin
   end;
 end;
 
-procedure Tdm1.LeIni(var Caminho, Caminho2, Usuario, Usuario2, Senha, Senha2,
-  CharacterSet, Auto: String; Arquivo: String; var Dialeto: Integer;
-  Maquina: String);
-var
-  ArqIni : tIniFile;
-begin
-  ArqIni := TIniFile.Create(GetCurrentDir + '\BaseSIC.ini');
-  Try
-    Caminho      := ArqIni.ReadString  ('SIC', 'Caminho' , Caminho);
-    Caminho2     := ArqIni.ReadString  ('PED', 'Caminho2', Caminho2);
-    Dialeto      := ArqIni.ReadInteger ('SIC', 'Dialeto' , Dialeto);
-    Usuario      := ArqIni.ReadString  ('SIC', 'Usuario' , Usuario);
-    Usuario2     := ArqIni.ReadString  ('PED', 'Usuario2', Usuario2);
-    Senha        := ArqIni.ReadString  ('SIC', 'Senha'   , Senha);
-    Senha2       := ArqIni.ReadString  ('PED', 'Senha2'  , Senha2);
-    CharacterSet := ArqIni.ReadString  ('SIC', 'ChrSet'  , CharacterSet);
-    Auto         := ArqIni.ReadString  ('SIC', 'Auto'    , Auto);
-  Finally
-    ArqIni.Free;
-  end;
-end;
-
 procedure Tdm1.pAtualizaStatusEquipamentos;
 var
   vlQuerySIC : TIBQuery;
@@ -3211,28 +3184,6 @@ begin
 
 
   FreeAndNil(vlQueryCMAcao);
-end;
-
-procedure Tdm1.pRegistraAcesso(prTipo, prLocal, prAtividade, prUsuarioID, prUsuario, prData : String);
-begin
-  with DS_ACESSO do
-    begin
-      Close;
-      SelectSQL.Text := 'select * from tbacesso a where a.acesso_id = 0';
-      Open;
-    end;
-
-  DS_ACESSO.Insert;
-
-  DS_ACESSODATA.AsString       := prData;
-  DS_ACESSOUSUARIO_ID.AsString := prUsuarioID;
-  DS_ACESSOUSUARIO.AsString    := prUsuario;
-  DS_ACESSOLOCAL.AsString      := prLocal;
-  DS_ACESSOTIPO.AsString       := prTipo;
-  DS_ACESSOATIVIDADE.AsString  := prAtividade;
-
-  DS_ACESSO.Post;
-  DS_ACESSO.Transaction.CommitRetaining;
 end;
 
 end.
