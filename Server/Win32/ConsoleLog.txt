@@ -1,0 +1,48 @@
+13/10/2021 17:40:15 - Erro ao ativar o servidor de atualização: Cannot create file "C:\Users\anderson.ti\Desktop\Projetos Delphi\Atualizador\Server\Win32\SICFAR\SICFAR_arquivos_comp.txt". O sistema não pode encontrar o caminho especificado
+-------------------------------------------
+13/10/2021 17:52:10 - Erro ao ativar o servidor de atualização: Invalid argument to date encode
+-------------------------------------------
+13/10/2021 17:58:14 - Erro ao ativar o servidor de atualização: Invalid argument to date encode
+-------------------------------------------
+13/10/2021 18:01:36 - Erro ao ativar o servidor de atualização: Invalid argument to date encode
+-------------------------------------------
+13/10/2021 18:06:47 - Erro ao ativar o servidor de atualização: Invalid argument to date encode
+-------------------------------------------
+13/10/2021 18:10:11 - Erro ao ativar o servidor de atualização: Invalid argument to date encode
+-------------------------------------------
+13/10/2021 18:14:24 - Erro ao Enviar Arquivo ao Cliente: Cannot open file "C:\Users\anderson.ti\Desktop\Projetos Delphi\Atualizador\Server\Win32\get 1\1.txt". O sistema não pode encontrar o caminho especificado
+-------------------------------------------
+13/10/2021 18:54:31 - Erro ao ativar o servidor de atualização: List index out of bounds (18)
+-------------------------------------------
+13/10/2021 18:56:58 - Erro ao ativar o servidor de atualização: List index out of bounds (18)
+-------------------------------------------
+13/10/2021 19:00:34 - Erro ao ativar o servidor de atualização: Cannot open file "C:\Users\anderson.ti\Desktop\Projetos Delphi\Atualizador\Server\Win32\SIZAP_arquivos_comp.txt". O sistema não pode encontrar o arquivo especificado
+-------------------------------------------
+13/10/2021 19:01:20 - Erro ao ativar o servidor de atualização: Cannot open file "C:\Users\anderson.ti\Desktop\Projetos Delphi\Atualizador\Server\Win32\SIZAP_arquivos_comp.txt". O sistema não pode encontrar o arquivo especificado
+-------------------------------------------
+13/10/2021 19:01:33 - Erro ao ativar o servidor de atualização: Cannot open file "C:\Users\anderson.ti\Desktop\Projetos Delphi\Atualizador\Server\Win32\SIZAP_arquivos_comp.txt". O sistema não pode encontrar o arquivo especificado
+-------------------------------------------
+13/10/2021 19:09:28 - Erro ao Enviar Arquivo ao Cliente: Cannot open file "C:\Users\anderson.ti\Desktop\Projetos Delphi\Atualizador\Server\Win32\get 1\1.txt". O sistema não pode encontrar o caminho especificado
+-------------------------------------------
+13/10/2021 19:16:43 - Erro ao Enviar Arquivo ao Cliente: Cannot open file "C:\Users\anderson.ti\Desktop\Projetos Delphi\Atualizador\Server\Win32\get 1\1.txt". O sistema não pode encontrar o caminho especificado
+-------------------------------------------
+13/10/2021 19:21:12 - Erro ao Enviar Arquivo ao Cliente: Cannot open file "C:\Users\anderson.ti\Desktop\Projetos Delphi\Atualizador\Server\Win32\Atializador\get 1\1.txt". O sistema não pode encontrar o caminho especificado
+-------------------------------------------
+14/10/2021 08:28:39 - Erro ao Enviar Arquivo ao Cliente: Cannot open file "C:\Users\anderson.ti\Desktop\Projetos Delphi\Atualizador\Server\Win32\Atializador\get 1\1.txt". O sistema não pode encontrar o caminho especificado
+-------------------------------------------
+14/10/2021 09:02:22 - Erro ao Enviar Arquivo ao Cliente: Cannot open file "C:\Users\anderson.ti\Desktop\Projetos Delphi\Atualizador\Server\Win32\Atializador\SICFAR\1.txt". O sistema não pode encontrar o caminho especificado
+-------------------------------------------
+14/10/2021 16:17:06 - Erro ao ativar o servidor de atualização: Invalid argument to date encode
+-------------------------------------------
+11/07/2024 19:52:32 - Servidor desativado.
+-------------------------------------------
+11/07/2024 23:05:49-Servidor Desativado.
+-------------------------------------------
+11/07/2024 23:07:10-Servidor Desativado.
+-------------------------------------------
+16/07/2024 17:50:11-Servidor Desativado.
+-------------------------------------------
+17/07/2024 08:15:21-Servidor Desativado.
+-------------------------------------------
+02/09/2025 09:10:35-Servidor Desativado.
+-------------------------------------------

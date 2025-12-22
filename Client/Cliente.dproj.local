@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2017/07/28 15:18:49.000.009,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/08/09 15:15:56.000.542,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/08/24 12:17:46.000.643,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/08/24 13:01:04.000.294,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/08/24 13:04:57.000.057,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/08/28 10:23:17.000.479,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/09/01 14:08:39.000.003,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/09/04 10:53:27.000.789,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/09/19 11:47:31.000.024,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/10/05 10:52:56.000.590,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/10/09 09:51:41.000.821,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/11/10 08:38:58.000.403,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/11/16 07:20:15.000.516,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/11/28 15:21:21.000.673,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/02/20 14:58:55.000.942,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/04/10 12:12:37.000.402,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/04/24 14:22:54.000.905,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/04/24 15:16:46.000.894,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/04/24 15:26:15.000.998,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/06/05 14:59:21.000.506,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/07/30 09:09:39.000.024,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/07/30 10:13:20.000.572,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/07/30 10:49:52.000.162,C:\Users\anderson.ti\Desktop\Desktop\Projetos Delphi\Atualização\Client\Unit_Client.pas=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/07/30 10:49:52.000.162,C:\Users\anderson.ti\Desktop\Desktop\Projetos Delphi\Atualização\Client\Unit_Client.dfm=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2018/07/30 10:49:56.000.490,C:\Users\anderson.ti\Desktop\Desktop\Projetos Delphi\Atualização\Client\Cliente.dproj=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2018/08/01 10:49:30.000.094,=C:\C3S\SICFAR\Unit_DM1.pas</Transaction>
+    <Transaction>2021/10/13 15:36:29.361,=C:\C3S\SICFAR\Unit_dmEstabilidade.pas</Transaction>
+  </Transactions>
+	<ActiveMobileDevice>
+		<NoProfile iOSSimulator="iPhone5"/>
+	</ActiveMobileDevice>
+</BorlandProject>

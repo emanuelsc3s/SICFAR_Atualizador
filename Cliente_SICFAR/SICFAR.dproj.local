@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2017/07/28 15:18:49.000.009,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/08/09 15:15:56.000.542,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/08/24 12:17:46.000.643,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/08/24 13:01:04.000.294,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/08/24 13:04:57.000.057,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/08/28 10:23:17.000.479,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/09/01 14:08:39.000.003,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/09/04 10:53:27.000.789,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/09/19 11:47:31.000.024,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/10/05 10:52:56.000.590,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/10/09 09:51:41.000.821,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/11/10 08:38:58.000.403,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/11/16 07:20:15.000.516,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/11/28 15:21:21.000.673,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/02/20 14:58:55.000.942,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/04/10 12:12:37.000.402,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/04/24 14:22:54.000.905,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/04/24 15:16:46.000.894,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/04/24 15:26:15.000.998,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/06/05 14:59:21.000.506,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/07/30 09:09:39.000.024,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/08/02 14:57:37.000.509,=C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/08/02 14:59:20.000.733,C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\anderson.ti\Desktop\Desktop\Projetos Delphi\Atualização\Cliente_SICFAR\Unit_Login.dfm</Transaction>
+    <Transaction>2018/08/02 14:59:20.000.733,C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\anderson.ti\Desktop\Desktop\Projetos Delphi\Atualização\Cliente_SICFAR\Unit_Login.pas</Transaction>
+    <Transaction>2018/08/02 14:59:31.000.527,C:\Users\anderson.ti\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\anderson.ti\Desktop\Desktop\Projetos Delphi\Atualização\Cliente_SICFAR\SICFAR.dproj</Transaction>
+    <Transaction>2018/08/02 15:00:29.000.965,=C:\Users\anderson.ti\Desktop\Desktop\Projetos Delphi\Atualização\Cliente_SICFAR\Unit_Atualizador.pas</Transaction>
+    <Transaction>2018/08/02 15:02:46.000.431,=C:\C3S\SICFAR\Biblioteca.pas</Transaction>
+    <Transaction>2018/08/02 15:03:01.000.758,=C:\C3S\SICFAR\Unit_DM1.pas</Transaction>
+    <Transaction>2018/08/02 15:15:24.000.073,=C:\Users\anderson.ti\Desktop\Desktop\Projetos Delphi\Atualização\Cliente_SICFAR\Unit2.pas</Transaction>
+    <Transaction>2018/08/02 15:18:43.000.651,C:\Users\anderson.ti\Desktop\Desktop\Projetos Delphi\Atualização\Cliente_SICFAR\Unit_Principal.pas=C:\Users\anderson.ti\Desktop\Desktop\Projetos Delphi\Atualização\Cliente_SICFAR\Unit2.pas</Transaction>
+    <Transaction>2018/08/02 15:18:43.000.651,C:\Users\anderson.ti\Desktop\Desktop\Projetos Delphi\Atualização\Cliente_SICFAR\Unit_Principal.dfm=C:\Users\anderson.ti\Desktop\Desktop\Projetos Delphi\Atualização\Cliente_SICFAR\Unit2.dfm</Transaction>
+    <Transaction>2018/08/02 15:19:37.000.360,=C:\Users\anderson.ti\Desktop\Desktop\Projetos Delphi\Atualização\Cliente_SICFAR\Busca\Unit_Busca_Empresa.pas</Transaction>
+    <Transaction>2018/08/02 15:20:37.000.530,=C:\C3S\SICFAR\Unit_dmProtheus.pas</Transaction>
+    <Transaction>2018/08/02 15:25:51.000.379,=C:\Users\anderson.ti\Desktop\Desktop\Projetos Delphi\Atualização\Cliente_SICFAR\Unit_UsuarioAlterarSenha.pas</Transaction>
+    <Transaction>2018/08/02 16:20:18.000.772,C:\Users\anderson.ti\Desktop\Desktop\Projetos Delphi\Atualização\Cliente_SICFAR\Unit_Login.pas=</Transaction>
+    <Transaction>2018/08/02 16:20:27.000.214,=C:\Users\anderson.ti\Desktop\Desktop\Projetos Delphi\Atualização\Cliente_SICFAR\Unit_Login.pas</Transaction>
+    <Transaction>2019/03/21 15:59:41.000.401,=C:\C3S\SICFAR\Unit_dmEstabilidade.pas</Transaction>
+  </Transactions>
+	<ActiveMobileDevice>
+		<NoProfile iOSSimulator="iPhone5"/>
+	</ActiveMobileDevice>
+</BorlandProject>
