@@ -41,7 +41,11 @@ type
     Label1: TLabel;
     btn_Fechar: TRzToolButton;
     RzSpacer3: TRzSpacer;
+    RzSpacer4: TRzSpacer;
+    btn_ConfigFirebird: TRzToolButton;
+    RzSpacer5: TRzSpacer;
     procedure ServidorExecute(AContext: TIdContext);
+    procedure btn_ConfigFirebirdClick(Sender: TObject);
     procedure ServidorConnect(AContext: TIdContext);
     procedure FormCreate(Sender: TObject);
     procedure btn_AtivarClick(Sender: TObject);
@@ -211,7 +215,7 @@ var
 implementation
 
 uses
-  System.IniFiles, Unit_DM1, Unit_dmProtheus, Biblioteca;
+  System.IniFiles, Unit_DM1, Unit_dmProtheus, Biblioteca, Unit_ConfigFirebirdIBX;
 
 {$R *.dfm}
 
@@ -289,6 +293,19 @@ begin
       FATALEXIT(0);
       Application.Terminate;
     end;
+end;
+
+{ ============================================================================
+  btn_ConfigFirebirdClick - Abre o formulário de configuração Firebird IBX
+  ============================================================================ }
+procedure TForm_PrincipalServer.btn_ConfigFirebirdClick(Sender: TObject);
+begin
+  Form_ConfigFirebirdIBX := TForm_ConfigFirebirdIBX.Create(Self);
+  try
+    Form_ConfigFirebirdIBX.ShowModal;
+  finally
+    Form_ConfigFirebirdIBX.Free;
+  end;
 end;
 
 procedure TForm_PrincipalServer.btn_SalvarClick(Sender: TObject);

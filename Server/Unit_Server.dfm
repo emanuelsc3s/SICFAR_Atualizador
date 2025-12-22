@@ -63,7 +63,9 @@
           btn_Desativar
           RzSpacer2
           btn_Salvar
-          RzSpacer3
+          RzSpacer4
+          btn_ConfigFirebird
+          RzSpacer5
           btn_Fechar)
         object btn_Ativar: TRzToolButton
           Left = 4
@@ -113,8 +115,32 @@
           Caption = 'Salvar'
           OnClick = btn_SalvarClick
         end
-        object btn_Fechar: TRzToolButton
+        object RzSpacer4: TRzSpacer
+          Left = 330
+          Top = 2
+          Height = 40
+          Grooved = True
+        end
+        object btn_ConfigFirebird: TRzToolButton
           Left = 338
+          Top = 1
+          Width = 100
+          Height = 43
+          Cursor = crHandPoint
+          ImageIndex = 8
+          Layout = blGlyphTop
+          UseToolbarButtonSize = False
+          Caption = 'Config. BD'
+          OnClick = btn_ConfigFirebirdClick
+        end
+        object RzSpacer5: TRzSpacer
+          Left = 438
+          Top = 2
+          Height = 40
+          Grooved = True
+        end
+        object btn_Fechar: TRzToolButton
+          Left = 446
           Top = 1
           Width = 100
           Height = 43
@@ -124,12 +150,6 @@
           UseToolbarButtonSize = False
           Caption = 'Fechar'
           OnClick = btn_FecharClick
-        end
-        object RzSpacer3: TRzSpacer
-          Left = 330
-          Top = 2
-          Height = 40
-          Grooved = True
         end
       end
       object GroupBox1: TGroupBox

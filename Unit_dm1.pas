@@ -171,7 +171,7 @@ type
     function fEnviaEmailPDIEstudo(const AAssunto, ADestino, prStatus, prEstudoID : String): Boolean;
     function fEnviaEmailPDIAmostra(const AAssunto, ADestino, prStatus, prAmostraID : String): Boolean;
 
-    //Usuário
+    //Usuï¿½rio
     function fRetornaUsuario(prUsuarioID : String) : String;
     function fRetornaUsuarioEmail(prUsuarioID : String) : String;
     function fRetornaUsuarioDepto(prUsuarioID : String) : String;
@@ -195,10 +195,10 @@ type
     function fRetornaMaxPedido(prUsuarioID : String) : Integer;
     function fRetornaCampoUsuario(prUsuarioID, prCampo: string) : String;
 
-    //Envia E-mail Reunião
+    //Envia E-mail Reuniï¿½o
     function fEnviaEmailReuniao(const AAssunto, ADestino, prReuniaoID : String) : Boolean;
 
-    //Atualização da situação do Equipamento
+    //Atualizaï¿½ï¿½o da situaï¿½ï¿½o do Equipamento
     procedure pAtualizaStatusEquipamentos;
     procedure pAtualizaStatusEquipamentoIndividual(prEquipamentoID : String);
 
@@ -254,7 +254,7 @@ var
 
   vBalancas : String;
 
-  // IDs dos Lançamentos Atuais
+  // IDs dos Lanï¿½amentos Atuais
   vMercadoriaID, vDocumentoID, vAtendimentoID, vVendaRapidaID, vPessoaID, vRadioID,
   vVendaImovelID, EmpresaID, Empresa, vUFEmpresa, vVendedorID, vCentroCustoID,
   vCondPagtoID, vBancoID, vBancoChequeID, vAgenteID, vTitularID, vContaID, vPedidoID,
@@ -280,7 +280,7 @@ var
 
   vProjetoID, vProjeto, vTreinamentoID : String;
 
-  //E-mail responsável estabilidade
+  //E-mail responsï¿½vel estabilidade
   vEmailEstabilidade : String;
 
 
@@ -289,7 +289,7 @@ var
   vCotacaoID : String;
 
   vRiscoProcessoID : String;
-  //ID do Controle de Mudança
+  //ID do Controle de Mudanï¿½a
   vCM, vCMAcao : String;
 
   vERUID, vERUItemID : String;
@@ -339,12 +339,12 @@ begin
 
     with IBDatabase1 do
       begin
-        Connected    := False;                                                                                  
+        Connected    := False;
         DatabaseName := Caminho;
 
         Params.Clear;
         Params.Add('user_name=' + Usuario);
-        Params.Add('password='  + senha); //Biblioteca.MyCrypt('D', senha));
+        Params.Add('password='  + MyCrypt('D', senha));
         Params.Add('lc_ctype='  + Character);
         SQLDialect := Dialeto;
 
@@ -495,12 +495,12 @@ begin
           Open;
         end;
 
-      //Configura os parâmetros necessários para SSL
+      //Configura os parï¿½metros necessï¿½rios para SSL
       IdSSLIOHandlerSocket                   := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
       IdSSLIOHandlerSocket.SSLOptions.Method := sslvSSLv23;
       IdSSLIOHandlerSocket.SSLOptions.Mode  := sslmClient;
 
-      //Variável referente a mensagem
+      //Variï¿½vel referente a mensagem
       idMsg                            := TIdMessage.Create(Self);
       idMsg.CharSet                    := 'utf-8';
       idMsg.Encoding                   := meMIME;
@@ -509,11 +509,11 @@ begin
       idMsg.Priority                   := mpNormal;
       idMsg.Subject                    := AAssunto;
 
-      //Add Destinatário(s)
+      //Add Destinatï¿½rio(s)
       idMsg.Recipients.Add;
       idMsg.Recipients.EMailAddresses := ADestino;
 
-      //Variável do texto
+      //Variï¿½vel do texto
       IdText := TIdText.Create(idMsg.MessageParts);
       IdText.Body.Add('<html>');
 
@@ -526,23 +526,23 @@ begin
       idText.Body.Add('<img src="https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/12019185122/original/1Tsfmwb6Jl2oFV2n1VPPq95aaXgxdvM8TA.png?1495211856"/>');
 
       IdText.Body.Add('<h3><font color=''00A9C7''>');
-      IdText.Body.Add('Ação Atrasada');
+      IdText.Body.Add('Aï¿½ï¿½o Atrasada');
       IdText.Body.Add('</font></h3> <br>');
 
       IdText.Body.Add('<p>');
       IdText.Body.Add('<b>CAPA</b> <br> <br>');
-      IdText.Body.Add('Número: ' + vlQuerySIC.FieldByName('ACAO_TIPO').AsString + '<br> ');
+      IdText.Body.Add('Nï¿½mero: ' + vlQuerySIC.FieldByName('ACAO_TIPO').AsString + '<br> ');
       IdText.Body.Add('Status: ' + vlQuerySIC.FieldByName('ACAO').AsString + '<br> ');
-      IdText.Body.Add('Responsável: ' + vlQuerySIC.FieldByName('RESPONSAVEL').AsString + '<br> ');
+      IdText.Body.Add('Responsï¿½vel: ' + vlQuerySIC.FieldByName('RESPONSAVEL').AsString + '<br> ');
       IdText.Body.Add('</p>');
 
       IdText.Body.Add('<hr>');
 
       IdText.Body.Add('<p>');
-      IdText.Body.Add('<b>AÇÃO</b> <br> <br>');
-      IdText.Body.Add('Ação Tipo: ' + vlQuerySIC.FieldByName('ACAO_TIPO').AsString + '<br> ');
-      IdText.Body.Add('Ação: ' + vlQuerySIC.FieldByName('ACAO').AsString + '<br> ');
-      IdText.Body.Add('Responsável: ' + vlQuerySIC.FieldByName('RESPONSAVEL').AsString + '<br> ');
+      IdText.Body.Add('<b>Aï¿½ï¿½O</b> <br> <br>');
+      IdText.Body.Add('Aï¿½ï¿½o Tipo: ' + vlQuerySIC.FieldByName('ACAO_TIPO').AsString + '<br> ');
+      IdText.Body.Add('Aï¿½ï¿½o: ' + vlQuerySIC.FieldByName('ACAO').AsString + '<br> ');
+      IdText.Body.Add('Responsï¿½vel: ' + vlQuerySIC.FieldByName('RESPONSAVEL').AsString + '<br> ');
       IdText.Body.Add('Prazo: ' + vlQuerySIC.FieldByName('PRAZO').AsString + '<br> ');
       IdText.Body.Add('Departamento: ' + vlQuerySIC.FieldByName('DEPARTAMENTO').AsString + '<br> ');
       IdText.Body.Add('Motivo: ' + vlQuerySIC.FieldByName('MOTIVO').AsString + '<br> ');
@@ -568,7 +568,7 @@ begin
       IdSMTP.Connect;
       IdSMTP.Authenticate;
 
-      //Se a conexão foi bem sucedida, envia a mensagem
+      //Se a conexï¿½o foi bem sucedida, envia a mensagem
       if IdSMTP.Connected then
       begin
         try
@@ -653,12 +653,12 @@ begin
           Open;
         end;
 
-      //Configura os parâmetros necessários para SSL
+      //Configura os parï¿½metros necessï¿½rios para SSL
       IdSSLIOHandlerSocket                   := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
       IdSSLIOHandlerSocket.SSLOptions.Method := sslvSSLv23;
       IdSSLIOHandlerSocket.SSLOptions.Mode  := sslmClient;
 
-      //Variável referente a mensagem
+      //Variï¿½vel referente a mensagem
       idMsg                            := TIdMessage.Create(Self);
       idMsg.CharSet                    := 'utf-8';
       idMsg.Encoding                   := meMIME;
@@ -667,11 +667,11 @@ begin
       idMsg.Priority                   := mpNormal;
       idMsg.Subject                    := AAssunto;
 
-      //Add Destinatário(s)
+      //Add Destinatï¿½rio(s)
       idMsg.Recipients.Add;
       idMsg.Recipients.EMailAddresses := ADestino;
 
-      //Variável do texto
+      //Variï¿½vel do texto
       IdText := TIdText.Create(idMsg.MessageParts);
       IdText.Body.Add('<html>');
 
@@ -684,16 +684,16 @@ begin
       idText.Body.Add('<img src="https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/12019185122/original/1Tsfmwb6Jl2oFV2n1VPPq95aaXgxdvM8TA.png?1495211856"/>');
 
       IdText.Body.Add('<h3><font color=''00A9C7''>');
-      IdText.Body.Add('Ação Atrasada');
+      IdText.Body.Add('Aï¿½ï¿½o Atrasada');
       IdText.Body.Add('</font></h3> <br>');
 
       IdText.Body.Add('<p>');
 
       IdText.Body.Add('CAPA ID: ' + vlQuerySIC.FieldByName('RNCCAPA_ID').AsString + '<br> ');
-      IdText.Body.Add('Número: ' + vlQuerySIC.FieldByName('NUMERO').AsString + '<br> ');
+      IdText.Body.Add('Nï¿½mero: ' + vlQuerySIC.FieldByName('NUMERO').AsString + '<br> ');
       IdText.Body.Add('Data: ' +  vlQuerySIC.FieldByName('DATA').AsString + '<br>');
       IdText.Body.Add('Status: ' +  vlQuerySIC.FieldByName('STATUS').AsString + '<br>');
-      IdText.Body.Add('Responsável: ' +  vlQuerySIC.FieldByName('RESPONSAVEL').AsString + '<br>');
+      IdText.Body.Add('Responsï¿½vel: ' +  vlQuerySIC.FieldByName('RESPONSAVEL').AsString + '<br>');
 
       IdText.Body.Add('</p>');
 
@@ -704,9 +704,9 @@ begin
 
 		  IdText.Body.Add('<tr>');
 			IdText.Body.Add('<thead>');
-			IdText.Body.Add('<th scope="col" style="text-align: left;">Tipo Ação</th>');
-			IdText.Body.Add('<th scope="col" style="text-align: left;">Ação</th>');
-			IdText.Body.Add('<th scope="col" style="text-align: left;">Responsável</th>');
+			IdText.Body.Add('<th scope="col" style="text-align: left;">Tipo Aï¿½ï¿½o</th>');
+			IdText.Body.Add('<th scope="col" style="text-align: left;">Aï¿½ï¿½o</th>');
+			IdText.Body.Add('<th scope="col" style="text-align: left;">Responsï¿½vel</th>');
 			IdText.Body.Add('<th scope="col" style="text-align: left;">Prazo</th>');
 			IdText.Body.Add('<th scope="col" style="text-align: left;">Departamento</th>');
 			IdText.Body.Add('<th scope="col" style="text-align: left;">Motivo</th>');
@@ -757,7 +757,7 @@ begin
       IdSMTP.Connect;
       IdSMTP.Authenticate;
 
-      //Se a conexão foi bem sucedida, envia a mensagem
+      //Se a conexï¿½o foi bem sucedida, envia a mensagem
       if IdSMTP.Connected then
       begin
         try
@@ -855,12 +855,12 @@ begin
           Open;
         end;
 
-      //Configura os parâmetros necessários para SSL
+      //Configura os parï¿½metros necessï¿½rios para SSL
       IdSSLIOHandlerSocket                   := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
       IdSSLIOHandlerSocket.SSLOptions.Method := sslvSSLv23;
       IdSSLIOHandlerSocket.SSLOptions.Mode  := sslmClient;
 
-      //Variável referente a mensagem
+      //Variï¿½vel referente a mensagem
       idMsg                            := TIdMessage.Create(Self);
       idMsg.CharSet                    := 'utf-8';
       idMsg.Encoding                   := meMIME;
@@ -869,11 +869,11 @@ begin
       idMsg.Priority                   := mpNormal;
       idMsg.Subject                    := AAssunto;
 
-      //Add Destinatário(s)
+      //Add Destinatï¿½rio(s)
       idMsg.Recipients.Add;
       idMsg.Recipients.EMailAddresses := ADestino;
 
-      //Variável do texto
+      //Variï¿½vel do texto
       IdText := TIdText.Create(idMsg.MessageParts);
       IdText.Body.Add('<html>');
 
@@ -895,7 +895,7 @@ begin
       IdText.Body.Add('Produdo: ' + vlQuerySIC.FieldByName('PRODUTO').AsString + '<br> ');
       IdText.Body.Add('Acondicionamento: ' +  vlQuerySIC.FieldByName('ACONDICIONAMENTO').AsString + '<br>');
       IdText.Body.Add('Lote: ' +  vlQuerySIC.FieldByName('LOTE').AsString + '<br>');
-      IdText.Body.Add('Fabricação: ' +  vlQuerySIC.FieldByName('LOTE_FABRICACAO').AsString + '<br>');
+      IdText.Body.Add('Fabricaï¿½ï¿½o: ' +  vlQuerySIC.FieldByName('LOTE_FABRICACAO').AsString + '<br>');
       IdText.Body.Add('Validade: ' +  vlQuerySIC.FieldByName('LOTE_VALIDADE').AsString + '<br>');
 
       if prStatus = 'Abortada' then
@@ -957,7 +957,7 @@ begin
       IdSMTP.Connect;
       IdSMTP.Authenticate;
 
-      //Se a conexão foi bem sucedida, envia a mensagem
+      //Se a conexï¿½o foi bem sucedida, envia a mensagem
       if IdSMTP.Connected then
       begin
         try
@@ -1035,7 +1035,7 @@ begin
           SQL.Add(' e.justificativa_exclusao');
           SQL.Add(' from tbpdei_estudo e');
 
-          if prStatus = 'Excluído' then
+          if prStatus = 'Excluï¿½do' then
             SQL.Add(' where e.deletado = ''S'' ')
           else
             SQL.Add(' where e.deletado = ''N'' ');
@@ -1044,12 +1044,12 @@ begin
           Open;
         end;
 
-      //Configura os parâmetros necessários para SSL
+      //Configura os parï¿½metros necessï¿½rios para SSL
       IdSSLIOHandlerSocket                   := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
       IdSSLIOHandlerSocket.SSLOptions.Method := sslvSSLv23;
       IdSSLIOHandlerSocket.SSLOptions.Mode  := sslmClient;
 
-      //Variável referente a mensagem
+      //Variï¿½vel referente a mensagem
       idMsg                            := TIdMessage.Create(Self);
       idMsg.CharSet                    := 'utf-8';
       idMsg.Encoding                   := meMIME;
@@ -1058,11 +1058,11 @@ begin
       idMsg.Priority                   := mpNormal;
       idMsg.Subject                    := AAssunto;
 
-      //Add Destinatário(s)
+      //Add Destinatï¿½rio(s)
       idMsg.Recipients.Add;
       idMsg.Recipients.EMailAddresses := ADestino;
 
-      //Variável do texto
+      //Variï¿½vel do texto
       IdText := TIdText.Create(idMsg.MessageParts);
       IdText.Body.Add('<html>');
 
@@ -1082,9 +1082,9 @@ begin
 
       IdText.Body.Add('ID: ' + vlQuerySIC.FieldByName('ESTUDO_ID').AsString + '<br> ');
       IdText.Body.Add('Estudo: ' + vlQuerySIC.FieldByName('ESTUDO').AsString + '<br> ');
-      IdText.Body.Add('Descrição: ' +  vlQuerySIC.FieldByName('ESTUDO_DESCRICAO').AsString + '<br>');
+      IdText.Body.Add('Descriï¿½ï¿½o: ' +  vlQuerySIC.FieldByName('ESTUDO_DESCRICAO').AsString + '<br>');
 
-      if prStatus = 'Excluído' then
+      if prStatus = 'Excluï¿½do' then
         IdText.Body.Add('Justificativa:<br>' + vlQuerySIC.FieldByName('JUSTIFICATIVA_EXCLUSAO').AsString);
 
       IdText.Body.Add('</p>');
@@ -1109,7 +1109,7 @@ begin
       IdSMTP.Connect;
       IdSMTP.Authenticate;
 
-      //Se a conexão foi bem sucedida, envia a mensagem
+      //Se a conexï¿½o foi bem sucedida, envia a mensagem
       if IdSMTP.Connected then
       begin
         try
@@ -1187,7 +1187,7 @@ begin
           SQL.Add(' f.justificativa_exclusao');
           SQL.Add(' from tbpdei_finalidade f');
 
-          if prStatus = 'Excluída' then
+          if prStatus = 'Excluï¿½da' then
             SQL.Add(' where f.deletado = ''S'' ')
           else
             SQL.Add(' where f.deletado = ''N'' ');
@@ -1196,12 +1196,12 @@ begin
           Open;
         end;
 
-      //Configura os parâmetros necessários para SSL
+      //Configura os parï¿½metros necessï¿½rios para SSL
       IdSSLIOHandlerSocket                   := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
       IdSSLIOHandlerSocket.SSLOptions.Method := sslvSSLv23;
       IdSSLIOHandlerSocket.SSLOptions.Mode  := sslmClient;
 
-      //Variável referente a mensagem
+      //Variï¿½vel referente a mensagem
       idMsg                            := TIdMessage.Create(Self);
       idMsg.CharSet                    := 'utf-8';
       idMsg.Encoding                   := meMIME;
@@ -1210,11 +1210,11 @@ begin
       idMsg.Priority                   := mpNormal;
       idMsg.Subject                    := AAssunto;
 
-      //Add Destinatário(s)
+      //Add Destinatï¿½rio(s)
       idMsg.Recipients.Add;
       idMsg.Recipients.EMailAddresses := ADestino;
 
-      //Variável do texto
+      //Variï¿½vel do texto
       IdText := TIdText.Create(idMsg.MessageParts);
       IdText.Body.Add('<html>');
 
@@ -1234,9 +1234,9 @@ begin
 
       IdText.Body.Add('ID: ' + vlQuerySIC.FieldByName('FINALIDADE_ID').AsString + '<br> ');
       IdText.Body.Add('Finalidade: ' + vlQuerySIC.FieldByName('FINALIDADE').AsString + '<br> ');
-      IdText.Body.Add('Descrição: ' +  vlQuerySIC.FieldByName('FINALIDADE_DESCRICAO').AsString + '<br>');
+      IdText.Body.Add('Descriï¿½ï¿½o: ' +  vlQuerySIC.FieldByName('FINALIDADE_DESCRICAO').AsString + '<br>');
 
-      if prStatus = 'Excluída' then
+      if prStatus = 'Excluï¿½da' then
         IdText.Body.Add('Justificativa:<br>' + vlQuerySIC.FieldByName('JUSTIFICATIVA_EXCLUSAO').AsString);
 
       IdText.Body.Add('</p>');
@@ -1261,7 +1261,7 @@ begin
       IdSMTP.Connect;
       IdSMTP.Authenticate;
 
-      //Se a conexão foi bem sucedida, envia a mensagem
+      //Se a conexï¿½o foi bem sucedida, envia a mensagem
       if IdSMTP.Connected then
       begin
         try
@@ -1333,12 +1333,12 @@ begin
   try
     try
 
-      //Configura os parâmetros necessários para SSL
+      //Configura os parï¿½metros necessï¿½rios para SSL
       IdSSLIOHandlerSocket                   := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
       IdSSLIOHandlerSocket.SSLOptions.Method := sslvSSLv23;
       IdSSLIOHandlerSocket.SSLOptions.Mode  := sslmClient;
 
-      //Variável referente a mensagem
+      //Variï¿½vel referente a mensagem
       idMsg                            := TIdMessage.Create(Self);
       idMsg.CharSet                    := 'utf-8';
       idMsg.Encoding                   := meMIME;
@@ -1347,11 +1347,11 @@ begin
       idMsg.Priority                   := mpNormal;
       idMsg.Subject                    := AAssunto;
 
-      //Add Destinatário(s)
+      //Add Destinatï¿½rio(s)
       idMsg.Recipients.Add;
       idMsg.Recipients.EMailAddresses := ADestino;
 
-      //Variável do texto
+      //Variï¿½vel do texto
       IdText := TIdText.Create(idMsg.MessageParts);
       IdText.Body.Add('<html>');
 
@@ -1364,7 +1364,7 @@ begin
       idText.Body.Add('<img src="https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/12019185122/original/1Tsfmwb6Jl2oFV2n1VPPq95aaXgxdvM8TA.png?1495211856"/>');
 
       IdText.Body.Add('<h3><font color=''00A9C7''>');
-      IdText.Body.Add('Retém');
+      IdText.Body.Add('Retï¿½m');
       IdText.Body.Add('</font></h3> <br>');
 
       IdText.Body.Add('<p> Teste');
@@ -1430,7 +1430,7 @@ begin
         if FileExists(AAnexo) then
           TIdAttachmentFile.Create(idMsg.MessageParts, AAnexo);
 
-      //Se a conexão foi bem sucedida, envia a mensagem
+      //Se a conexï¿½o foi bem sucedida, envia a mensagem
       if IdSMTP.Connected then
       begin
         try
@@ -1515,25 +1515,25 @@ begin
           Open;
         end;
 
-      //Configura os parâmetros necessários para SSL
+      //Configura os parï¿½metros necessï¿½rios para SSL
       IdSSLIOHandlerSocket                   := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
       IdSSLIOHandlerSocket.SSLOptions.Method := sslvSSLv23;
       IdSSLIOHandlerSocket.SSLOptions.Mode  := sslmClient;
 
-      //Variável referente a mensagem
+      //Variï¿½vel referente a mensagem
       idMsg                            := TIdMessage.Create(Self);
       idMsg.CharSet                    := 'utf-8';
       idMsg.Encoding                   := meMIME;
-      idMsg.From.Name                  := 'SIC - Reunião [' + prReuniaoID + ']';
+      idMsg.From.Name                  := 'SIC - Reuniï¿½o [' + prReuniaoID + ']';
       idMsg.From.Address               := vEmail;
       idMsg.Priority                   := mpNormal;
       idMsg.Subject                    := AAssunto;
 
-      //Add Destinatário(s)
+      //Add Destinatï¿½rio(s)
       idMsg.Recipients.Add;
       idMsg.Recipients.EMailAddresses := ADestino;
 
-      //Variável do texto
+      //Variï¿½vel do texto
       IdText := TIdText.Create(idMsg.MessageParts);
       IdText.Body.Add('<html>');
 
@@ -1546,14 +1546,14 @@ begin
       idText.Body.Add('<img src="https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/12019185122/original/1Tsfmwb6Jl2oFV2n1VPPq95aaXgxdvM8TA.png?1495211856"/>');
 
       IdText.Body.Add('<h3><font color=''00A9C7''>');
-      IdText.Body.Add('Reunião');
+      IdText.Body.Add('Reuniï¿½o');
       IdText.Body.Add('</font></h3> <br>');
 
       IdText.Body.Add('<p>');
 
-      IdText.Body.Add('Olá, tudo bem? <br>');
-      IdText.Body.Add('Você está convocado para a reunião detalhada abaixo, solicitada por ' + vlQuerySIC.FieldByName('SOLICITANTE').AsString + '.<br>');
-      IdText.Body.Add('Contamos com sua indispensável presença. Até lá! <br><br><br>');
+      IdText.Body.Add('Olï¿½, tudo bem? <br>');
+      IdText.Body.Add('Vocï¿½ estï¿½ convocado para a reuniï¿½o detalhada abaixo, solicitada por ' + vlQuerySIC.FieldByName('SOLICITANTE').AsString + '.<br>');
+      IdText.Body.Add('Contamos com sua indispensï¿½vel presenï¿½a. Atï¿½ lï¿½! <br><br><br>');
       IdText.Body.Add('</p>');
 
       IdText.Body.Add('<p>');
@@ -1561,13 +1561,13 @@ begin
       IdText.Body.Add('<b>Departamento:</b> ' + vlQuerySIC.FieldByName('DEPARTAMENTO').AsString + '<br> ');
       IdText.Body.Add('<b>Solicitante:</b> '  + vlQuerySIC.FieldByName('SOLICITANTE').AsString + '<br> ');
       IdText.Body.Add('<b>Pauta:</b> '        + vlQuerySIC.FieldByName('PAUTA').AsString + '<br>');
-      IdText.Body.Add('<b>Data:</b> '         + vlQuerySIC.FieldByName('DATA').AsString + ' às '
+      IdText.Body.Add('<b>Data:</b> '         + vlQuerySIC.FieldByName('DATA').AsString + ' ï¿½s '
                                               + vlQuerySIC.FieldByName('HORA').AsString + '<br>');
       IdText.Body.Add('<b>Local:</b> '        + vlQuerySIC.FieldByName('REUNIAOLOCAL').AsString + '<br>');
       IdText.Body.Add('<b>Criticidade:</b> '  + vlQuerySIC.FieldByName('CRITICIDADE').AsString + '<br>');
       IdText.Body.Add('<b>Recurso(s):</b> '   + vlQuerySIC.FieldByName('RECURSO').AsString + '<br><br>');
 
-      IdText.Body.Add('<b>Observação:</b> <br>');
+      IdText.Body.Add('<b>Observaï¿½ï¿½o:</b> <br>');
       IdText.Body.Add(vlQuerySIC.FieldByName('OBS').AsString + '<br>');
 
       IdText.Body.Add('</p>');
@@ -1604,7 +1604,7 @@ begin
       IdSMTP.Connect;
       IdSMTP.Authenticate;
 
-      //Se a conexão foi bem sucedida, envia a mensagem
+      //Se a conexï¿½o foi bem sucedida, envia a mensagem
       if IdSMTP.Connected then
       begin
         try
@@ -1682,12 +1682,12 @@ begin
   try
     try
 
-      //Configura os parâmetros necessários para SSL
+      //Configura os parï¿½metros necessï¿½rios para SSL
       IdSSLIOHandlerSocket                   := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
       IdSSLIOHandlerSocket.SSLOptions.Method := sslvSSLv23;
       IdSSLIOHandlerSocket.SSLOptions.Mode  := sslmClient;
 
-      //Variável referente a mensagem
+      //Variï¿½vel referente a mensagem
       idMsg                            := TIdMessage.Create(Self);
       idMsg.CharSet                    := 'utf-8';
       idMsg.Encoding                   := meMIME;
@@ -1698,11 +1698,11 @@ begin
       idMsg.Priority                   := mpNormal;
       idMsg.Subject                    := AAssunto;
 
-      //Add Destinatário(s)
+      //Add Destinatï¿½rio(s)
       idMsg.Recipients.Add;
       idMsg.Recipients.EMailAddresses := ADestino;
 
-      //Variável do texto
+      //Variï¿½vel do texto
       IdText := TIdText.Create(idMsg.MessageParts);
       IdText.Body.Add('<html>');
 
@@ -1730,8 +1730,8 @@ begin
       IdText.Body.Add('</font></h3> <br>');
 
       IdText.Body.Add('<p>');
-      IdText.Body.Add('<b>Número Original: </b>' + Trim(vlQuerySIC.FieldByName('CODIGO_ORI').AsString) + '<br><br>');
-//      IdText.Body.Add('<b>Número Atual: </b>'    + Trim(vlQuerySIC.FieldByName('NUMERO').AsString) + '/' + Trim(vlQuerySIC.FieldByName('ANO').AsString) +'<br>');
+      IdText.Body.Add('<b>Nï¿½mero Original: </b>' + Trim(vlQuerySIC.FieldByName('CODIGO_ORI').AsString) + '<br><br>');
+//      IdText.Body.Add('<b>Nï¿½mero Atual: </b>'    + Trim(vlQuerySIC.FieldByName('NUMERO').AsString) + '/' + Trim(vlQuerySIC.FieldByName('ANO').AsString) +'<br>');
       IdText.Body.Add('<b>Detectado por: </b>'   + Trim(vlQuerySIC.FieldByName('DETECTADO_POR').AsString) + '<br>');
       IdText.Body.Add('<b>Departamento: </b>'    + Trim(vlQuerySIC.FieldByName('DEPARTAMENTO').AsString) + '<br>');
       IdText.Body.Add('<b>Origem: </b>'          + Trim(vlQuerySIC.FieldByName('ORIGEM').AsString) + '<br>');
@@ -1742,8 +1742,8 @@ begin
       IdText.Body.Add('<b>TAG: </b>'             + Trim(vlQuerySIC.FieldByName('EQUIPAMENTO_TAG').AsString) + '<br>');
 
       IdText.Body.Add('<b>Reincidente: </b>'   + Trim(vlQuerySIC.FieldByName('REINCIDENTE').AsString) + '<br>');
-      IdText.Body.Add('<b>Classificação: </b>' + Trim(vlQuerySIC.FieldByName('CLASSIFICACAO').AsString) + '<br>');
-      IdText.Body.Add('<b>Ação: </b>'          + Trim(vlQuerySIC.FieldByName('ACAO').AsString) + '<br><br>');
+      IdText.Body.Add('<b>Classificaï¿½ï¿½o: </b>' + Trim(vlQuerySIC.FieldByName('CLASSIFICACAO').AsString) + '<br>');
+      IdText.Body.Add('<b>Aï¿½ï¿½o: </b>'          + Trim(vlQuerySIC.FieldByName('ACAO').AsString) + '<br><br>');
 
       with vlQuerySIC do
         begin
@@ -1763,7 +1763,7 @@ begin
           IdText.Body.Add('<tr>');
           IdText.Body.Add('<thead>');
           IdText.Body.Add('<th scope="col" style="text-align: left;" style=" width: 60px;">Produto</th>');
-          IdText.Body.Add('<th scope="col" style="text-align: left;">Descrição do Produto</th>');
+          IdText.Body.Add('<th scope="col" style="text-align: left;">Descriï¿½ï¿½o do Produto</th>');
           IdText.Body.Add('<th scope="col" style="text-align: left;"style=" width: 60px;">Lote</th>');
           //IdText.Body.Add('<th scope="col" style="text-align: left;"style=" width: 60px;">Cliente</th>');
           IdText.Body.Add('<th scope="col" style="text-align: left;">Nome do Cliente</th>');
@@ -1805,13 +1805,13 @@ begin
       vlRichEdit.DataSource := vlDataSouce;
 
 
-   //   IdText.Body.Add('<b>Descrição: </b><br>' + Trim(vlQuerySIC.FieldByName('DESCRICAO').AsString) + '<br><br>');
+   //   IdText.Body.Add('<b>Descriï¿½ï¿½o: </b><br>' + Trim(vlQuerySIC.FieldByName('DESCRICAO').AsString) + '<br><br>');
       vlRichEdit.DataField := 'DESCRICAO';
-      IdText.Body.Add('<b>Descrição: </b><br>' + Trim(vlRichEdit.Text) + '<br><br>');
+      IdText.Body.Add('<b>Descriï¿½ï¿½o: </b><br>' + Trim(vlRichEdit.Text) + '<br><br>');
       vlRichEdit.DataField := 'DISPOSICAO';
-      IdText.Body.Add('<b>Disposição: </b><br>' + Trim(vlRichEdit.Text) + '<br><br>');
+      IdText.Body.Add('<b>Disposiï¿½ï¿½o: </b><br>' + Trim(vlRichEdit.Text) + '<br><br>');
       vlRichEdit.DataField := 'INVESTIGACAO';
-      IdText.Body.Add('<b>Investigação: </b><br>' + Trim(vlRichEdit.Text) + '<br><br>');
+      IdText.Body.Add('<b>Investigaï¿½ï¿½o: </b><br>' + Trim(vlRichEdit.Text) + '<br><br>');
 
       FreeAndNil(vlDataSouce);
       FreeAndNil(vlRichEdit);
@@ -1837,7 +1837,7 @@ begin
       if vlReprovacao <> '' then
         begin
           IdText.Body.Add('<br><br>');
-          IdText.Body.Add('<b>Justificativa da Reprovação:</b> <br>');
+          IdText.Body.Add('<b>Justificativa da Reprovaï¿½ï¿½o:</b> <br>');
           IdText.Body.Add(vlReprovacao);
         end;
 
@@ -1850,14 +1850,14 @@ begin
 
           IdText.Body.Add('<br>');
           IdText.Body.Add('<hr>');
-          IdText.Body.Add('<p> Alterações - ' + Usuario + '</p>');
+          IdText.Body.Add('<p> Alteraï¿½ï¿½es - ' + Usuario + '</p>');
           IdText.Body.Add('<table class="table table-sm" style="font-size: 11px; font-family: verdana;">');
           IdText.Body.Add('<tr>');
           IdText.Body.Add('<thead>');
           IdText.Body.Add('<th scope="col" style="text-align: left; width: 10%;">Campo</th>');
           IdText.Body.Add('<th scope="col" style="text-align: left; width: 40%;">De</th>');
           IdText.Body.Add('<th scope="col" style="text-align: left; width: 40%;">Para</th>');
-          IdText.Body.Add('<th scope="col" style="text-align: left; width: 10%;">Descrição</th>');
+          IdText.Body.Add('<th scope="col" style="text-align: left; width: 10%;">Descriï¿½ï¿½o</th>');
           IdText.Body.Add('</thead>');
           IdText.Body.Add('</tr>');
           while not prCDSCampos.Eof do
@@ -1901,7 +1901,7 @@ begin
         if FileExists(AAnexo) then
           TIdAttachmentFile.Create(idMsg.MessageParts, AAnexo);
 
-      //Se a conexão foi bem sucedida, envia a mensagem
+      //Se a conexï¿½o foi bem sucedida, envia a mensagem
       if IdSMTP.Connected then
       begin
         try
@@ -1973,25 +1973,25 @@ begin
 
   try
     try
-      //Configura os parâmetros necessários para SSL
+      //Configura os parï¿½metros necessï¿½rios para SSL
       IdSSLIOHandlerSocket                   := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
       IdSSLIOHandlerSocket.SSLOptions.Method := sslvSSLv23;
       IdSSLIOHandlerSocket.SSLOptions.Mode  := sslmClient;
 
-      //Variável referente a mensagem
+      //Variï¿½vel referente a mensagem
       idMsg                            := TIdMessage.Create(Self);
       idMsg.CharSet                    := 'utf-8';
       idMsg.Encoding                   := meMIME;
-      idMsg.From.Name                  := 'Reunião - FARMACE';
+      idMsg.From.Name                  := 'Reuniï¿½o - FARMACE';
       idMsg.From.Address               := 'naoresponda@farmace.com.br';//vEmail ;
       idMsg.Priority                   := mpNormal;
       idMsg.Subject                    := AAssunto;
 
-      //Add Destinatário(s)
+      //Add Destinatï¿½rio(s)
       idMsg.Recipients.Add;
       idMsg.Recipients.EMailAddresses := ADestino;
 
-      //Variável do texto
+      //Variï¿½vel do texto
       IdText := TIdText.Create(idMsg.MessageParts);
       IdText.Body.Add('<html>');
 
@@ -2006,7 +2006,7 @@ begin
       IdText.Body.Add('</font></h3> <br>');
 
       IdText.Body.Add('<p style="font-size: 12px;">');
-      IdText.Body.Add('Olá! Fique atento às suas próximas reuniões, conforme detalhado abaixo:<br><br>');
+      IdText.Body.Add('Olï¿½! Fique atento ï¿½s suas prï¿½ximas reuniï¿½es, conforme detalhado abaixo:<br><br>');
     //  IdText.Body.Add(prParametros);
       IdText.Body.Add('</p>');
 
@@ -2085,7 +2085,7 @@ begin
         if FileExists(AAnexo) then
           TIdAttachmentFile.Create(idMsg.MessageParts, AAnexo);
 
-      //Se a conexão foi bem sucedida, envia a mensagem
+      //Se a conexï¿½o foi bem sucedida, envia a mensagem
       if IdSMTP.Connected then
       begin
         try
@@ -2157,12 +2157,12 @@ begin
 
   try
     try
-      //Configura os parâmetros necessários para SSL
+      //Configura os parï¿½metros necessï¿½rios para SSL
       IdSSLIOHandlerSocket                   := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
       IdSSLIOHandlerSocket.SSLOptions.Method := sslvSSLv23;
       IdSSLIOHandlerSocket.SSLOptions.Mode  := sslmClient;
 
-      //Variável referente a mensagem
+      //Variï¿½vel referente a mensagem
       idMsg                            := TIdMessage.Create(Self);
       idMsg.CharSet                    := 'utf-8';
       idMsg.Encoding                   := meMIME;
@@ -2171,11 +2171,11 @@ begin
       idMsg.Priority                   := mpNormal;
       idMsg.Subject                    := AAssunto;
 
-      //Add Destinatário(s)
+      //Add Destinatï¿½rio(s)
       idMsg.Recipients.Add;
       idMsg.Recipients.EMailAddresses := ADestino;
 
-      //Variável do texto
+      //Variï¿½vel do texto
       IdText := TIdText.Create(idMsg.MessageParts);
       IdText.Body.Add('<html>');
 
@@ -2190,18 +2190,18 @@ begin
       IdText.Body.Add('</font></h3> <br>');
 
       IdText.Body.Add('<p style="font-size: 12px;">');
-      IdText.Body.Add('Olá! Segue em anexo o relatório de Validade dos lotes de acordo com os parâmetros abaixo:<br><br>');
+      IdText.Body.Add('Olï¿½! Segue em anexo o relatï¿½rio de Validade dos lotes de acordo com os parï¿½metros abaixo:<br><br>');
       IdText.Body.Add(prParametros);
       IdText.Body.Add('</p>');
 
       IdText.Body.Add('<table class="table table-sm" style="font-size: 11px; font-family: verdana; border: 1px">');
       IdText.Body.Add('<tr>');
       IdText.Body.Add('<thead>');
-      IdText.Body.Add('<th scope="col" style="text-align: left; width: 30px;">Código</th>');
+      IdText.Body.Add('<th scope="col" style="text-align: left; width: 30px;">Cï¿½digo</th>');
       IdText.Body.Add('<th scope="col" style="text-align: left; width: 200px;">Produto</th>');
       IdText.Body.Add('<th scope="col" style="text-align: left; width: 40px;">UM</th>');
       IdText.Body.Add('<th scope="col" style="text-align: left; width: 60px;">Lote</th>');
-      IdText.Body.Add('<th scope="col" style="text-align: left; width: 60px;">Fabricação</th>');
+      IdText.Body.Add('<th scope="col" style="text-align: left; width: 60px;">Fabricaï¿½ï¿½o</th>');
       IdText.Body.Add('<th scope="col" style="text-align: left; width: 60px;">Validade</th>');
       IdText.Body.Add('<th scope="col" style="text-align: left; width: 60px;">Local</th>');
       IdText.Body.Add('<th scope="col" style="text-align: left; width: 60px;">Estoque</th>');
@@ -2252,7 +2252,7 @@ begin
         if FileExists(AAnexo) then
           TIdAttachmentFile.Create(idMsg.MessageParts, AAnexo);
 
-      //Se a conexão foi bem sucedida, envia a mensagem
+      //Se a conexï¿½o foi bem sucedida, envia a mensagem
       if IdSMTP.Connected then
       begin
         try
@@ -2604,7 +2604,7 @@ begin
         vlStatus := 'PENDENTE'
       else
         begin
-          if Trim(vlQueryEquipamento.FieldByName('NUMERO_CERTIFICADO').AsString) = 'Não se Aplica' then
+          if Trim(vlQueryEquipamento.FieldByName('NUMERO_CERTIFICADO').AsString) = 'Nï¿½o se Aplica' then
             vlStatus := 'OK'
           else
             begin
@@ -2802,7 +2802,7 @@ begin
       SQL.Text := 'update tbequipamento set';
       SQL.Add(' situacao = ''OK'' ');
       SQL.Add(' where deletado = ''N'' ');
-      SQL.Add(' and lower(numero_certificado) = ''não se aplica'' ');
+      SQL.Add(' and lower(numero_certificado) = ''nï¿½o se aplica'' ');
       SQL.Add(' and desativado is null ');
       ExecSQL;
       Transaction.CommitRetaining;
@@ -2916,7 +2916,7 @@ begin
       Close;
 
       SQL.Text := 'update tbtreinamento t set';
-      SQL.Add(' t.status_realizado = ''Não Realizado'' ');
+      SQL.Add(' t.status_realizado = ''Nï¿½o Realizado'' ');
       SQL.Add(' where t.deletado = ''N'' ');
 
       if prTreinamentoID <> '' then
@@ -2936,7 +2936,7 @@ begin
       Close;
 
       SQL.Text := 'update tbtreinamento t set';
-      SQL.Add(' t.status_realizado = ''Não Realizado'' ');
+      SQL.Add(' t.status_realizado = ''Nï¿½o Realizado'' ');
       SQL.Add(' where t.deletado = ''N'' ');
 
       if prTreinamentoID <> '' then
@@ -3068,7 +3068,7 @@ begin
                   begin
                     campo := vlQueryAtividade.Fields[x].FieldName;
 
-                    if campo <> 'CHAMADO_ID' then // O ID o banco gerará o ID para o novo registro
+                    if campo <> 'CHAMADO_ID' then // O ID o banco gerarï¿½ o ID para o novo registro
                       DS_CHAMADO.FieldByName(campo).Value := vlQueryAtividade.FieldByName(campo).Value;
                   end;
 
