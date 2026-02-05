@@ -1,4 +1,4 @@
-﻿object Form_PrincipalServer: TForm_PrincipalServer
+object Form_PrincipalServer: TForm_PrincipalServer
   Left = 0
   Top = 0
   Caption = 'Atualizador'

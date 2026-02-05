@@ -40,7 +40,6 @@ type
     Edit_PortaUpdate: TEdit;
     Label1: TLabel;
     btn_Fechar: TRzToolButton;
-    RzSpacer3: TRzSpacer;
     RzSpacer4: TRzSpacer;
     btn_ConfigFirebird: TRzToolButton;
     RzSpacer5: TRzSpacer;
@@ -7837,19 +7836,15 @@ begin
             begin
               // TBProdutos TOTVS->Local
               pAtualizaProduto;
-
-              // TBPessoas TOTVS->Local
               pAtualizaFornecedor;
-
-              // TBCONDPAGTO TOTVS->Local
               pAtualizaCondPagto;
+              pAtualizaCliente;
+              pAtualizaSC;
+              pAtualizaDepto;
 
               // SA1 TOTVS Local->Cloud
 //              pAtualizaClienteAmazon;
 
-    //        pAtualizaSC;
-
-    //        pAtualizaDepto;
             end;
 
 //          pAtualizaSCCloudToLocal(dm1.IBDatabase1, dm1.IBTransaction1, dm1.IBDatabaseCloudSICFAR, dm1.IBTransactionCloudSICFAR);
