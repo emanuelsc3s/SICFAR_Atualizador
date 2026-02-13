@@ -940,8 +940,8 @@ begin
       Close;
 
       SQL.Text := 'SELECT';
-      SQL.Add(' SA1.A1_COD, SA1.A1_NOME, SA1.A1_NREDUZ, SA1.A1_MUN, SA1.A1_EST, SA1.A1_END,');
-      SQL.Add(' SA1.A1_BAIRRO, SA1.A1_COMPLEM, SA1.A1_CEP, SA1.A1_CGC,');
+      SQL.Add(' R_E_C_N_O_, A1_FILIAL, SA1.A1_COD, SA1.A1_NOME, SA1.A1_NREDUZ, SA1.A1_MUN, SA1.A1_EST, SA1.A1_END,');
+      SQL.Add(' SA1.A1_BAIRRO, SA1.A1_COMPLEM, SA1.A1_CEP, SA1.A1_CGC, A1_DDD, SA1.A1_TEL,');
       SQL.Add(' RTRIM(SA1.A1_DDD)+''-''+SA1.A1_TEL AS TELEFONE,');
       SQL.Add(' SA1.A1_EMAIL, SA1.A1_YTPCLI,');
       SQL.Add(' CASE WHEN SA1.A1_ULTCOM <> '''' THEN CONVERT(VARCHAR,CAST(SA1.A1_ULTCOM AS DATETIME),103) END AS A1_ULTCOM,');
@@ -958,8 +958,11 @@ begin
       SQL.Add(' WHEN ''5'' THEN ''Demais Clientes'' ');
       SQL.Add(' END AS TIPOCLIENTE, SA1.A1_VEND');
       SQL.Add(' FROM SA1010 (NOLOCK) SA1');
-      SQL.Add(' WHERE D_E_L_E_T_ = '' '' ');
+      SQL.Add(' WHERE D_E_L_E_T_ = '''' ');
       SQL.Add(' AND A1_MSEXP = '''' ');
+
+//      InputBox('SQL', 'Text', SQL.Text);
+
       Open;
     end;
 
@@ -988,7 +991,7 @@ begin
               SQL.Add(' email, classes, recno, data_inc, deletado)');
               SQL.Add(' values');
               SQL.Add(' (:pEmpresaID, :pERPCodigo, :pNomePopular, :pNome, :pEndereco,');
-              SQL.Add(' :pBairro, :pCidade, :pUF, :pCEP, :pCPFCNPJ, :pTelefone');
+              SQL.Add(' :pBairro, :pCidade, :pUF, :pCEP, :pCPFCNPJ, :pTelefone,');
               SQL.Add(' :pEmail, :pClasses, :pRECNO, :pData, :pDeletado)');
             end;
         end
@@ -1043,6 +1046,7 @@ begin
 
               ExecSQL;
               Transaction.CommitRetaining;
+              Memo_Log.Lines.Add(FormatDateTime('DD/MM/YYYY HH:MM:SS', Now) + ' - Cliente processado com sucesso: ' + Trim(vQueryTOTVS.FieldByName('A1_COD').AsString));
             end;
         finally
           with vQueryUpdate do
@@ -1063,7 +1067,7 @@ begin
         end;
       except on e : Exception do
         begin
-          Memo_Log.Lines.Add(FormatDateTime('DD/MM/YYYY HH:MM:SS', Now) + ' - Erro ao atualizar cliente: ' + e.Message);
+          Memo_Log.Lines.Add(FormatDateTime('DD/MM/YYYY HH:MM:SS', Now) + ' - Erro ao atualizar cliente ' + Trim(vQueryTOTVS.FieldByName('A1_COD').AsString) + ': ' + e.Message);
           vQuerySIC.Transaction.RollbackRetaining;
           dm1.IBDatabase1.Connected := False;
           dm1.IBDatabase1.Connected := True;
@@ -1109,7 +1113,7 @@ begin
       SQL.Add(' WHEN ''5'' THEN ''Demais Clientes'' ');
       SQL.Add(' END AS TIPOCLIENTE, SA1.A1_VEND');
       SQL.Add(' FROM SA1010 (NOLOCK) SA1');
-      SQL.Add(' WHERE D_E_L_E_T_ = '' '' ');
+      SQL.Add(' WHERE D_E_L_E_T_ = '''' ');
       SQL.Add(' AND A1_MSEXP = '''' ');
   //    InputBox('','',sql.Text);
       Open;
@@ -1257,8 +1261,8 @@ begin
                   TThread.Synchronize(TThread.CurrentThread,
                     procedure
                     begin
-                      Memo_Log.Lines.Add(FormatDateTime('DD/MM/YYYY HH:MM:SS', Now) + '-Cliente Atualizado PedidosOnline: ' +
-                                        lClienteTOTVS + '-' + lNomeClienteTOTVS)
+                      Memo_Log.Lines.Add(FormatDateTime('DD/MM/YYYY HH:MM:SS', Now) + '-Cliente Atualizado -> PedidosOnline: ' +
+                                        lClienteTOTVS + '-' + lNomeClienteTOTVS);
                     end);
                 end;
 
@@ -1267,7 +1271,7 @@ begin
                   TThread.Synchronize(TThread.CurrentThread,
                     procedure
                     begin
-                      vMsgErro := FormatDateTime('DD/MM/YYYY HH:MM:SS', Now) + '-Erro ao estabelecer conexão Clientes Local->Cloud PedidosOnline: ' + e.Message;
+                      vMsgErro := FormatDateTime('DD/MM/YYYY HH:MM:SS', Now) + '-Erro ao estabelecer conexão Clientes Local-> PedidosOnline: ' + e.Message;
                       logErros(vMsgErro);
                       Memo_Log.Lines.Add(vMsgErro);
                     end);
@@ -7829,23 +7833,25 @@ begin
 
   if vPararServidor = False then
     begin
-      TThread.CreateAnonymousThread(
-        procedure
-        begin
-          if LTOTVS then
-            begin
+//      TThread.CreateAnonymousThread(
+//        procedure
+//        begin
+//          if LTOTVS then
+//            begin
               // TBProdutos TOTVS->Local
               pAtualizaProduto;
               pAtualizaFornecedor;
               pAtualizaCondPagto;
-              pAtualizaCliente;
-              pAtualizaSC;
+//              pAtualizaCliente;
+              pAtualizaClienteAmazon;
               pAtualizaDepto;
+
+//            pAtualizaSC;
 
               // SA1 TOTVS Local->Cloud
 //              pAtualizaClienteAmazon;
 
-            end;
+//            end;
 
 //          pAtualizaSCCloudToLocal(dm1.IBDatabase1, dm1.IBTransaction1, dm1.IBDatabaseCloudSICFAR, dm1.IBTransactionCloudSICFAR);
 //          pAtualizaSCLocalToCloud(dm1.IBDatabase1, dm1.IBTransaction1, dm1.IBDatabaseCloudSICFAR, dm1.IBTransactionCloudSICFAR);
@@ -7879,12 +7885,12 @@ begin
 //          pAtualizaLicitacaoLocalToCloud(dm1.IBDatabase1, dm1.IBDatabaseCloudSICFAR, dm1.IBTransaction1, dm1.IBTransactionCloudSICFAR);
 
           // Reativar o timer após a execução
-          TThread.Synchronize(TThread.CurrentThread,
-            procedure
-            begin
+//          TThread.Synchronize(TThread.CurrentThread,
+//            procedure
+//            begin
               Timer_Tabelas.Enabled := True;
-            end);
-        end).Start;
+//            end);
+//        end).Start;
     end
   else
     Timer_Tabelas.Enabled := True;
