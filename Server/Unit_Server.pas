@@ -1451,7 +1451,7 @@ begin
             First;
             while not Eof do
               begin
-                Memo_Log.Lines.Add(FormatDateTime('DD/MM/YYYY HH:MM:SS', Now) + ' - Cliente atualizado na SA1: ' +
+                Memo_Log.Lines.Add(FormatDateTime('DD/MM/YYYY HH:MM:SS', Now) + ' - Cliente atualizado ->SICFAR->PedidosOnline: ' +
                   Trim(FieldByName('A1_COD').AsString) + ' - ' + Trim(FieldByName('A1_NOME').AsString));
                 Next;
               end;
