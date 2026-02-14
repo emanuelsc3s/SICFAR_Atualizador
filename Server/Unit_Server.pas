@@ -69,10 +69,11 @@ type
     procedure pAtualizaProduto;
     procedure pAtualizaFornecedor;
     procedure pAtualizaCondPagto;
-    procedure pAtualizaCliente;
-    procedure pAtualizaClienteAmazon;
+    procedure pAtualizaCliente(pAtualizarSA1: Boolean = True; AListaCodigosProcessados: TStringList = nil);
+    procedure pAtualizaClienteAmazon(pAtualizarSA1: Boolean = True; AListaCodigosProcessados: TStringList = nil);
+    procedure pAtualizaClienteEAmazonComUpdateSA1Unico;
     procedure pAtualizaPorta(prPorta : String);
-    function fRetornaPorta : Integer;
+    function  fRetornaPorta : Integer;
 
     procedure pAtualizaSC;
     procedure pAtualizaDepto;
@@ -931,7 +932,7 @@ begin
   end;
 end;
 
-procedure TForm_PrincipalServer.pAtualizaCliente;
+procedure TForm_PrincipalServer.pAtualizaCliente(pAtualizarSA1: Boolean = True; AListaCodigosProcessados: TStringList = nil);
 begin
   with vQueryTOTVS do
     begin
@@ -1046,24 +1047,22 @@ begin
 
               ExecSQL;
               Transaction.CommitRetaining;
-              Memo_Log.Lines.Add(FormatDateTime('DD/MM/YYYY HH:MM:SS', Now) + ' - Cliente processado com sucesso: ' + Trim(vQueryTOTVS.FieldByName('A1_COD').AsString));
+
+              if AListaCodigosProcessados <> nil then
+                AListaCodigosProcessados.Add(Trim(vQueryTOTVS.FieldByName('A1_COD').AsString));
             end;
         finally
-          with vQueryUpdate do
-            begin
-              //dmProtheus.ADOConnection1.BeginTrans;
-              //Prepared := True;
-              Close;
-
-              SQL.Text := 'UPDATE SA1010 SET';
-              SQL.Add(' A1_MSEXP = ''' + FormatDateTime('YYYYMMDD', Date) + ''' ');
-              SQL.Add(' WHERE D_E_L_E_T_ = '''' ');
-              SQL.Add(' AND A1_MSEXP = '''' ');
-              SQL.Add(' AND A1_COD = ''' + Trim(vQueryTOTVS.FieldByName('A1_COD').AsString) + ''' ');
-
-              ExecSQL;
-              //dmProtheus.ADOConnection1.CommitTrans;
-            end;
+          if pAtualizarSA1 then
+            with vQueryUpdate do
+              begin
+                Close;
+                SQL.Text := 'UPDATE SA1010 SET';
+                SQL.Add(' A1_MSEXP = ''' + FormatDateTime('YYYYMMDD', Date) + ''' ');
+                SQL.Add(' WHERE D_E_L_E_T_ = '''' ');
+                SQL.Add(' AND A1_MSEXP = '''' ');
+                SQL.Add(' AND A1_COD = ''' + Trim(vQueryTOTVS.FieldByName('A1_COD').AsString) + ''' ');
+                ExecSQL;
+              end;
         end;
       except on e : Exception do
         begin
@@ -1083,7 +1082,7 @@ begin
     end;
 end;
 
-procedure TForm_PrincipalServer.pAtualizaClienteAmazon;
+procedure TForm_PrincipalServer.pAtualizaClienteAmazon(pAtualizarSA1: Boolean = True; AListaCodigosProcessados: TStringList = nil);
 var
   lClienteTOTVS, lNomeClienteTOTVS : string;
   vMsgErro : string;
@@ -1240,30 +1239,22 @@ begin
 
                       ExecSQL;
                       Transaction.CommitRetaining;
+
+                      if AListaCodigosProcessados <> nil then
+                        AListaCodigosProcessados.Add(lClienteTOTVS);
                     end;
                 finally
-                  with vQueryUpdate do
-                    begin
-                      //dmProtheus.ADOConnection1.BeginTrans;
-                      //Prepared := True;
-                      Close;
-
-                      SQL.Text := 'UPDATE SA1010 SET';
-                      SQL.Add(' A1_MSEXP = ''' + FormatDateTime('YYYYMMDD', Date) + ''' ');
-                      SQL.Add(' WHERE D_E_L_E_T_ = '''' ');
-                      SQL.Add(' AND A1_MSEXP = '''' ');
-                      SQL.Add(' AND A1_COD = ''' + lClienteTOTVS + ''' ');
-
-                      ExecSQL;
-                      //dmProtheus.ADOConnection1.CommitTrans;
-                    end;
-
-                  TThread.Synchronize(TThread.CurrentThread,
-                    procedure
-                    begin
-                      Memo_Log.Lines.Add(FormatDateTime('DD/MM/YYYY HH:MM:SS', Now) + '-Cliente Atualizado -> PedidosOnline: ' +
-                                        lClienteTOTVS + '-' + lNomeClienteTOTVS);
-                    end);
+                  if pAtualizarSA1 then
+                    with vQueryUpdate do
+                      begin
+                        Close;
+                        SQL.Text := 'UPDATE SA1010 SET';
+                        SQL.Add(' A1_MSEXP = ''' + FormatDateTime('YYYYMMDD', Date) + ''' ');
+                        SQL.Add(' WHERE D_E_L_E_T_ = '''' ');
+                        SQL.Add(' AND A1_MSEXP = '''' ');
+                        SQL.Add(' AND A1_COD = ''' + lClienteTOTVS + ''' ');
+                        ExecSQL;
+                      end;
                 end;
 
               except on e : Exception do
@@ -1372,30 +1363,21 @@ begin
 
                       ExecSQL;
                       Transaction.CommitRetaining;
+                      if AListaCodigosProcessados <> nil then
+                        AListaCodigosProcessados.Add(lClienteTOTVS);
                     end;
                 finally
-                  with vQueryUpdate do
-                    begin
-                      //dmProtheus.ADOConnection1.BeginTrans;
-                      //Prepared := True;
-                      Close;
-
-                      SQL.Text := 'UPDATE SA1010 SET';
-                      SQL.Add(' A1_MSEXP = ''' + FormatDateTime('YYYYMMDD', Date) + ''' ');
-                      SQL.Add(' WHERE D_E_L_E_T_ = '''' ');
-                      SQL.Add(' AND A1_MSEXP = '''' ');
-                      SQL.Add(' AND A1_COD = ''' + lClienteTOTVS + ''' ');
-
-                      ExecSQL;
-                      //dmProtheus.ADOConnection1.CommitTrans;
-                    end;
-
-                  TThread.Synchronize(TThread.CurrentThread,
-                    procedure
-                    begin
-                      Memo_Log.Lines.Add(FormatDateTime('DD/MM/YYYY HH:MM:SS', Now) + '-Endereço de Entrega Atualizado PedidosOnline: ' +
-                                         lClienteTOTVS + '-' + lNomeClienteTOTVS);
-                    end);
+                  if pAtualizarSA1 then
+                    with vQueryUpdate do
+                      begin
+                        Close;
+                        SQL.Text := 'UPDATE SA1010 SET';
+                        SQL.Add(' A1_MSEXP = ''' + FormatDateTime('YYYYMMDD', Date) + ''' ');
+                        SQL.Add(' WHERE D_E_L_E_T_ = '''' ');
+                        SQL.Add(' AND A1_MSEXP = '''' ');
+                        SQL.Add(' AND A1_COD = ''' + lClienteTOTVS + ''' ');
+                        ExecSQL;
+                      end;
                 end;
 
               except on e : Exception do
@@ -1422,6 +1404,65 @@ begin
           vQueryTOTVS.Next;
         end;
     end;
+end;
+
+procedure TForm_PrincipalServer.pAtualizaClienteEAmazonComUpdateSA1Unico;
+var
+  ListaLocal, ListaAmazon, ListaResultado : TStringList;
+  i : Integer;
+  sInClause : string;
+begin
+  ListaLocal     := TStringList.Create;
+  ListaAmazon    := TStringList.Create;
+  ListaResultado := TStringList.Create;
+  try
+    pAtualizaCliente(False, ListaLocal);
+    pAtualizaClienteAmazon(False, ListaAmazon);
+
+    ListaResultado.Sorted := True;
+    ListaResultado.Duplicates := dupIgnore;
+    for i := 0 to ListaLocal.Count - 1 do
+      if ListaAmazon.IndexOf(ListaLocal[i]) >= 0 then
+        ListaResultado.Add(ListaLocal[i]);
+
+    if ListaResultado.Count > 0 then
+      begin
+        sInClause := '';
+        for i := 0 to ListaResultado.Count - 1 do
+          begin
+            if i > 0 then
+              sInClause := sInClause + ',';
+            sInClause := sInClause + '''' + ListaResultado[i] + '''';
+          end;
+        with vQueryUpdate do
+          begin
+            Close;
+            SQL.Text := 'UPDATE SA1010 SET A1_MSEXP = ''' + FormatDateTime('YYYYMMDD', Date) + ''' ';
+            SQL.Add('WHERE D_E_L_E_T_ = '''' AND A1_COD IN (' + sInClause + ')');
+            ExecSQL;
+          end;
+        with vQueryTOTVS do
+          begin
+            Close;
+            Connection := dmProtheus.ADOConnection1;
+            CommandTimeout := 999999;
+            SQL.Text := 'SELECT A1_COD, A1_NOME FROM SA1010 (NOLOCK) WHERE D_E_L_E_T_ = '''' AND A1_COD IN (' + sInClause + ')';
+            Open;
+            First;
+            while not Eof do
+              begin
+                Memo_Log.Lines.Add(FormatDateTime('DD/MM/YYYY HH:MM:SS', Now) + ' - Cliente atualizado na SA1: ' +
+                  Trim(FieldByName('A1_COD').AsString) + ' - ' + Trim(FieldByName('A1_NOME').AsString));
+                Next;
+              end;
+            Close;
+          end;
+      end;
+  finally
+    ListaLocal.Free;
+    ListaAmazon.Free;
+    ListaResultado.Free;
+  end;
 end;
 
 procedure TForm_PrincipalServer.pAtualizaCondPagto;
@@ -7842,8 +7883,7 @@ begin
               pAtualizaProduto;
               pAtualizaFornecedor;
               pAtualizaCondPagto;
-//              pAtualizaCliente;
-              pAtualizaClienteAmazon;
+              pAtualizaClienteEAmazonComUpdateSA1Unico;
               pAtualizaDepto;
 
 //            pAtualizaSC;

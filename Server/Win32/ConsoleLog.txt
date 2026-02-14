@@ -86,3 +86,5 @@
 -------------------------------------------
 13/02/2026 16:48:25-Servidor Desativado.
 -------------------------------------------
+14/02/2026 10:40:00 - Erro ao ativar o servidor de atualização: Could not bind socket. Address and port are already in use.
+-------------------------------------------
